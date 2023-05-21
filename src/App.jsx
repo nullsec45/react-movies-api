@@ -1,17 +1,25 @@
-import { useState } from 'react'
-import { Modal, Navbar, Search, MovieList } from "./components";
+import React, { useEffect } from 'react'
+import { Home, Detail } from "./pages";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 
 function App() {
-
   return (
     <>
-      <Navbar />
-      <div className='container'>
-        <Search />
-        <Modal />
-        <MovieList />
-      </div>
+      <Router>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} exact />
+            <Route path="/detail/:id" element={<Detail />} exact />
+          </Routes>
+        </main>
+      </Router >
     </>
 
   )
