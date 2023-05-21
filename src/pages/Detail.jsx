@@ -10,6 +10,7 @@ const Detail = () => {
 
     useEffect(() => {
         getMovie(id)
+        localStorage.setItem("detail", true)
     }, []);
 
     const getMovie = (id) => {

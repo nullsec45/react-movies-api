@@ -14,17 +14,18 @@ export default class Home extends Component {
             click: false
         }
     }
-
+    detail = localStorage.getItem("detail");
     componentDidMount() {
-        if (this.state.title) {
-            this.searchMovies(this.state.title)
-        } else {
-            let title = localStorage.getItem("title") ? localStorage.getItem("title") : this.state.title
-            this.setState({ title })
-            this.searchMovies(title);
+        if (this.detail) {
+            if (this.state.title) {
+                this.searchMovies(this.state.title)
+            } else {
+                let title = localStorage.getItem("title") ? localStorage.getItem("title") : this.state.title
+                this.setState({ title })
+                this.searchMovies(title);
+            }
         }
-
-
+        localStorage.removeItem("detail")
     }
 
 
@@ -42,7 +43,6 @@ export default class Home extends Component {
         event.preventDefault();
         let title = this.state.title
         this.searchMovies(title)
-        this.setState({ click: true })
     }
 
     searchMovies = (title) => {
